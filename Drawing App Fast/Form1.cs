@@ -37,7 +37,7 @@ namespace Drawing_App_Fast
         }
 
         public Form1()
-        {...................
+        {
             init();
         }
 
