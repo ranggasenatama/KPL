@@ -37,23 +37,23 @@
             // 
             // toolStripContainer1.ContentPanel
             // 
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(766, 419);
-            // 
-            // toolStripContainer1.LeftToolStripPanel
-            // 
-            
-            this.toolStripContainer1.Location = new System.Drawing.Point(-3, 3);
+            this.toolStripContainer1.ContentPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(597, 294);
+            this.toolStripContainer1.ContentPanel.Load += new System.EventHandler(this.toolStripContainer1_ContentPanel_Load);
+            this.toolStripContainer1.Location = new System.Drawing.Point(-2, 2);
+            this.toolStripContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(791, 444);
+            this.toolStripContainer1.Size = new System.Drawing.Size(622, 344);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
             // DrawingWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(621, 341);
             this.Controls.Add(this.toolStripContainer1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DrawingWindow";
             this.Text = "Form1";
             this.toolStripContainer1.ResumeLayout(false);

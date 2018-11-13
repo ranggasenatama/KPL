@@ -20,17 +20,18 @@ namespace DrawingToolkit
         {
             InitializeComponent();
 
-            this.canvas = new DefaultCanvas();
+            this.canvas = new DefaultCanvas(); 
             this.toolStripContainer1.ContentPanel.Controls.Add((Control)this.canvas);
 
 
             this.toolbox = new DefaultToolBox();
             this.toolStripContainer1.TopToolStripPanel.Controls.Add((Control)this.toolbox);
 
-
+            this.toolbox.AddTool(new SelectTool());
             this.toolbox.AddTool(new LineTool());
             this.toolbox.AddTool(new CircleTool());
-            this.toolbox.AddTool(new SelectTool());
+            this.toolbox.AddTool(new ConnectorTool());
+
             //this.toolbox.AddTool(new StatefulLineTool());
             this.toolbox.ToolSelected += Toolbox_ToolSelected;
 
@@ -43,6 +44,11 @@ namespace DrawingToolkit
                 this.canvas.SetActiveTool(tool);
                 tool.TargetCanvas = this.canvas;
             }
+        }
+
+        private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
