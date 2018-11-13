@@ -73,6 +73,7 @@
     <Compile Include="DefaultToolBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Shapes\Rectangle.cs" />
     <Compile Include="States\EditState.cs" />
     <Compile Include="States\PreviewState.cs" />
     <Compile Include="States\StaticState.cs" />
@@ -83,6 +84,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tools\LineTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\RectangleTool.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tools\SelectTool.cs">
@@ -128,6 +132,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\connector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rectangle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

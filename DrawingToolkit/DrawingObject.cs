@@ -37,6 +37,9 @@ namespace DrawingToolkit
         public abstract void RenderOnPreview();
         public abstract void RenderOnEditingView();
         public abstract void RenderOnStaticView();
+        //public abstract void Add(DrawingObject obj);
+        //public abstract void Remove(DrawingObject obj);
+        //public abstract void GetChild();
 
         public void ChangeState(DrawingState drawingState)
         {

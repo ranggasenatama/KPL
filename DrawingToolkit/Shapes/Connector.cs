@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DrawingToolkit.Shapes
 {
-    class Connector: DrawingObject
+    public class Connector: DrawingObject
     {
         private const double EPSILON = 3.0;
 
