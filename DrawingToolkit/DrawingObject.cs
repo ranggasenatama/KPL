@@ -11,14 +11,13 @@ namespace DrawingToolkit
     public abstract class DrawingObject
     {
         public Graphics Graphics { get; set; }
-        
+
         public abstract Boolean isSelected(Point mouse);
         public abstract void isNotSelected();
 
         public abstract bool Intersect(int xTest, int yTest);
 
         public abstract void Translate(int x, int y, int xAmount, int yAmount);
-
 
         public DrawingState State
         {

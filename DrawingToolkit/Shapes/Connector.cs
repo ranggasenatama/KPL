@@ -5,6 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace DrawingToolkit.Shapes
 {
@@ -14,6 +15,10 @@ namespace DrawingToolkit.Shapes
 
         public Point startPoint { get; set; }
         public Point finishPoint { get; set; }
+
+        private DrawingObject start;
+        private DrawingObject end;
+
         private Pen pen;
 
         public Connector()
@@ -29,6 +34,30 @@ namespace DrawingToolkit.Shapes
         public Connector(Point initX, Point initY) : this(initX)
         {
             this.finishPoint = initY;
+        }
+
+        public void initStartAndEndObject(DrawingObject start, DrawingObject end)
+        {
+            this.start = start;
+            this.end = end;
+            //start.Observable += Update;
+            //end.Observable += Update;
+            Debug.WriteLine("init "+start);
+            Debug.WriteLine("init "+end);
+            Update();
+        }
+
+        public void Update()
+        {
+            Debug.WriteLine(start);
+            Debug.WriteLine(end);
+            if (start == null || end == null)
+            {
+                Debug.WriteLine("null");
+                return;
+            }
+            //startPoint = start.GetPoint;
+            //finishPoint = end.GetPoint;
         }
 
         public override void Draw()

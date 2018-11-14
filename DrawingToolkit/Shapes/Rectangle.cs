@@ -15,7 +15,9 @@ namespace DrawingToolkit.Shapes
         public int Width { get; set; }
         public int Height { get; set; }
 
-        private Pen pen;
+        public Action Observable { get; set; }
+
+        private Pen pen = new Pen(Color.Black);
 
         public Rectangle()
         {
