@@ -23,5 +23,6 @@ namespace DrawingToolkit
         //COMMAND
         void ExecuteCommand(ICommand command);
         void Undo();
+        void Redo();
     }
 }

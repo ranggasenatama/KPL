@@ -97,6 +97,9 @@
     <Compile Include="Tools\RectangleTool.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Tools\RedoTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Tools\SelectTool.cs">
       <SubType>Component</SubType>
     </Compile>

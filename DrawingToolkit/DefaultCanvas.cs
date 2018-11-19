@@ -137,6 +137,8 @@ namespace DrawingToolkit
             return null;
         }
 
+
+        //COMMAND
         public void ExecuteCommand(ICommand command)
         {
             commandManager.ExecuteCommand(command);
@@ -145,6 +147,11 @@ namespace DrawingToolkit
         public void Undo()
         {
             commandManager.Undo();
+        }
+
+        public void Redo()
+        {
+            commandManager.Redo();
         }
     }
 }
