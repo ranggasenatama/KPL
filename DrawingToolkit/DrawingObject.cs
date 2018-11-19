@@ -40,7 +40,7 @@ namespace DrawingToolkit
         //public abstract void Remove(DrawingObject obj);
         //public abstract void GetChild();
 
-        public void ChangeState(DrawingState drawingState)
+        public virtual void ChangeState(DrawingState drawingState)
         {
             this.state = drawingState;
         }

@@ -45,8 +45,9 @@ namespace DrawingToolkit.Tools
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.classs = new Class();
-                this.canvas.AddDrawingObject(obj2);
+                this.classs = new Class(e.X, e.Y);
+                System.Console.WriteLine(this.classs.State);
+                this.canvas.AddDrawingObject(this.classs);
             }
         }
 
@@ -54,7 +55,24 @@ namespace DrawingToolkit.Tools
         {
             if (e.Button == MouseButtons.Left)
             {
-                
+                Rectangle rectangle1 = (this.classs.drawingObjects[0] as Rectangle);
+                Rectangle rectangle2 = (this.classs.drawingObjects[1] as Rectangle);
+                Rectangle rectangle3 = (this.classs.drawingObjects[2] as Rectangle);
+                int width = e.X - rectangle1.X;
+                int height = e.Y - rectangle1.Y;
+                height /= 3;
+
+                if (width > 0 && height > 0)
+                {
+                    rectangle1.Width = width;
+                    rectangle1.Height = height;
+                    rectangle2.Width = width;
+                    rectangle2.Height = height;
+                    rectangle2.Y = rectangle1.Y + rectangle1.Height;
+                    rectangle3.Width = width;
+                    rectangle3.Height = height;
+                    rectangle3.Y = rectangle2.Y + rectangle1.Height;
+                }
             }
         }
 

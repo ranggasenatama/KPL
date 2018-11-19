@@ -60,11 +60,6 @@ namespace DrawingToolkit.Shapes
             //finishPoint = end.GetPoint;
         }
 
-        public override void Draw()
-        {
-            this.Graphics.DrawLine(this.pen, startPoint, finishPoint);
-        }
-
         public override bool isSelected(Point mouse)
         {
             double m = (double)(finishPoint.Y - startPoint.Y) / (double)(finishPoint.X - startPoint.X);

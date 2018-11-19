@@ -46,6 +46,7 @@ namespace DrawingToolkit.Tools
             if (e.Button == MouseButtons.Left)
             {
                 this.rectangle = new Rectangle(e.X, e.Y);
+                System.Console.WriteLine(this.rectangle.State);
                 this.canvas.AddDrawingObject(this.rectangle);
             }
         }

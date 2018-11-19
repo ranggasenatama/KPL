@@ -17,9 +17,9 @@ namespace DrawingToolkit.Shapes
 
         public Action Observable { get; set; }
 
-        private Pen pen = new Pen(Color.Black);
+        private Pen pen;
 
-        public Rectangle()
+        public Rectangle() : base()
         {
             this.pen = new Pen(Color.Black);
         }
@@ -34,11 +34,6 @@ namespace DrawingToolkit.Shapes
         {
             this.Width = initWidth;
             this.Height = initHeight;
-        }
-
-        public override void Draw()
-        {
-            this.Graphics.DrawRectangle(pen, X, Y, Width, Height);
         }
 
         public override bool isSelected(Point mouse)

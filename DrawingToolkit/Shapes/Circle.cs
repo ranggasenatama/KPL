@@ -17,7 +17,7 @@ namespace DrawingToolkit.Shapes
 
         private Pen pen;
 
-        public Circle()
+        public Circle() : base()
         {
             this.pen = new Pen(Color.Black);
         }
@@ -32,11 +32,6 @@ namespace DrawingToolkit.Shapes
         {
             this.cirWidth = initWidth;
             this.cirHeight = initHeight;
-        }
-
-        public override void Draw()
-        {
-            this.Graphics.DrawEllipse(pen, cirX, cirY, cirWidth, cirHeight);
         }
 
         public override bool isSelected(Point mouse)
@@ -67,19 +62,19 @@ namespace DrawingToolkit.Shapes
         {
             this.pen.Color = Color.Black;
             this.pen.DashStyle = DashStyle.Solid;
-            Graphics.DrawRectangle(this.pen, cirX, cirY, cirWidth, cirHeight);
+            this.Graphics.DrawEllipse(pen, cirX, cirY, cirWidth, cirHeight);
         }
         public override void RenderOnEditingView()
         {
             this.pen.Color = Color.Blue;
             this.pen.DashStyle = DashStyle.Solid;
-            Graphics.DrawRectangle(this.pen, cirX, cirY, cirWidth, cirHeight);
+            this.Graphics.DrawEllipse(pen, cirX, cirY, cirWidth, cirHeight);
         }
         public override void RenderOnPreview()
         {
             this.pen.Color = Color.Red;
             this.pen.DashStyle = DashStyle.DashDot;
-            Graphics.DrawRectangle(this.pen, cirX, cirY, cirWidth, cirHeight);
+            this.Graphics.DrawEllipse(pen, cirX, cirY, cirWidth, cirHeight);
         }
 
         public override void Translate(int x, int y, int xAmount, int yAmount)
