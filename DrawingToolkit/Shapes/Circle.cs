@@ -77,7 +77,7 @@ namespace DrawingToolkit.Shapes
             this.Graphics.DrawEllipse(pen, cirX, cirY, cirWidth, cirHeight);
         }
 
-        public override void Translate(int x, int y, int xAmount, int yAmount)
+        public override void Translate(int xAmount, int yAmount)
         {
             this.cirX += xAmount;
             this.cirY += yAmount;

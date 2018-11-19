@@ -79,7 +79,7 @@ namespace DrawingToolkit.Shapes
             Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
         }
 
-        public override void Translate(int x, int y, int xAmount, int yAmount)
+        public override void Translate(int xAmount, int yAmount)
         {
             this.X += xAmount;
             this.Y += yAmount;

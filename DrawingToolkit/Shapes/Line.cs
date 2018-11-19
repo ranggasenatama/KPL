@@ -102,7 +102,7 @@ namespace DrawingToolkit.Shapes
             }
         }
 
-        public override void Translate(int x, int y, int xAmount, int yAmount)
+        public override void Translate(int xAmount, int yAmount)
         {
             this.startPoint = new Point(this.startPoint.X + xAmount, this.startPoint.Y + yAmount);
             this.finishPoint = new Point(this.finishPoint.X + xAmount, this.finishPoint.Y + yAmount);

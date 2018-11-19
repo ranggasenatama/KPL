@@ -96,7 +96,7 @@ namespace DrawingToolkit.Shapes
             }
         }
 
-        public override void Translate(int x, int y, int xAmount, int yAmount)
+        public override void Translate(int xAmount, int yAmount)
         {
             foreach (DrawingObject obj in this.drawingObjects)
             {
