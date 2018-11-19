@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DrawingToolkit.Command;
 
 namespace DrawingToolkit
 {
@@ -13,6 +14,7 @@ namespace DrawingToolkit
         private ITool activeTool;
         private List<DrawingObject> drawingObjects;
         private DrawingWindow window;
+        private CommandManager commandManager = new CommandManager();
 
         public DefaultCanvas()
         {
@@ -133,6 +135,16 @@ namespace DrawingToolkit
                 }
             }
             return null;
+        }
+
+        public void ExecuteCommand(ICommand command)
+        {
+            commandManager.ExecuteCommand(command);
+        }
+
+        public void Undo()
+        {
+            commandManager.Undo();
         }
     }
 }

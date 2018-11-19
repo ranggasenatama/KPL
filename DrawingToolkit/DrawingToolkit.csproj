@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Command\CommandManager.cs" />
+    <Compile Include="Command\MoveCommand.cs" />
+    <Compile Include="Command\UndoableCommand.cs" />
     <Compile Include="DefaultCanvas.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -58,6 +61,7 @@
       <DependentUpon>DrawingWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="ICanvas.cs" />
+    <Compile Include="ICommand.cs" />
     <Compile Include="IconSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,6 +98,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tools\SelectTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\UndoTool.cs">
       <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="DrawingWindow.resx">
@@ -139,6 +146,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rectangle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

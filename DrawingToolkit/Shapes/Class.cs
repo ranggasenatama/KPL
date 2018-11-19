@@ -100,7 +100,7 @@ namespace DrawingToolkit.Shapes
         {
             foreach (DrawingObject obj in this.drawingObjects)
             {
-                obj.Translate(x, y, xAmount, yAmount);
+                obj.Translate(xAmount, yAmount);
             }
         }
     }

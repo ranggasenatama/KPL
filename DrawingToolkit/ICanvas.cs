@@ -19,5 +19,9 @@ namespace DrawingToolkit
         DrawingObject SelectObjectAt(int x, int y);
         void DeselectAllObjects();
         void RemoveDrawingObject(DrawingObject drawingObject);
+
+        //COMMAND
+        void ExecuteCommand(ICommand command);
+        void Undo();
     }
 }

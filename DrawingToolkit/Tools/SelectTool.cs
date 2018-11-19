@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DrawingToolkit.Command;
 
 namespace DrawingToolkit.Tools
 {
@@ -11,8 +12,8 @@ namespace DrawingToolkit.Tools
     {
         private ICanvas canvas;
         private DrawingObject selectedObject;
-        private int xInitial;
-        private int yInitial;
+        private int xInitial, xPrevInitial;
+        private int yInitial, yPrevInitial;
 
         public Cursor Cursor
         {
@@ -61,6 +62,8 @@ namespace DrawingToolkit.Tools
             }*/
             this.xInitial = e.X;
             this.yInitial = e.Y;
+            this.xPrevInitial = e.X;
+            this.yPrevInitial = e.Y;
 
             if (e.Button == MouseButtons.Left && canvas != null)
             {
@@ -75,19 +78,24 @@ namespace DrawingToolkit.Tools
             {
                 if (selectedObject != null)
                 {
-                    int xAmount = e.X - xInitial;
-                    int yAmount = e.Y - yInitial;
-                    xInitial = e.X;
-                    yInitial = e.Y;
+                    int xAmount = e.X - xPrevInitial;
+                    int yAmount = e.Y - yPrevInitial;
+                    xPrevInitial = e.X;
+                    yPrevInitial = e.Y;
 
-                    selectedObject.Translate(e.X, e.Y, xAmount, yAmount);
+                    selectedObject.Translate(xAmount, yAmount);
                 }
             }
         }
 
         public void ToolMouseUp(object sender, MouseEventArgs e)
         {
-            
+            int xAmount = xPrevInitial - xInitial;
+            int yAmount = yPrevInitial - yInitial;
+            selectedObject.Translate(-xAmount, -yAmount);
+
+            MoveCommand command = new MoveCommand(selectedObject, xAmount, yAmount);
+            canvas.ExecuteCommand(command);
         }
     }
 }
