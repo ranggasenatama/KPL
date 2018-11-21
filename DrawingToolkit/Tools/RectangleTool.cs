@@ -8,28 +8,19 @@ using System.Windows.Forms;
 
 namespace DrawingToolkit.Tools
 {
-    public class RectangleTool : ToolStripButton, ITool
+    public class RectangleTool : CreateTool
     {
-        private ICanvas canvas;
         private Rectangle rectangle;
 
-        public Cursor Cursor
+        public override String Name
         {
             get
             {
-                return Cursors.Arrow;
-            }
-        }
-
-        public ICanvas TargetCanvas
-        {
-            get
-            {
-                return this.canvas;
+                return name;
             }
             set
             {
-                this.canvas = value;
+                this.name = value;
             }
         }
 
@@ -41,17 +32,17 @@ namespace DrawingToolkit.Tools
             this.CheckOnClick = true;
         }
 
-        public void ToolMouseDown(object sender, MouseEventArgs e)
+        public override void ToolMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 this.rectangle = new Rectangle(e.X, e.Y);
                 System.Console.WriteLine(this.rectangle.State);
-                this.canvas.AddDrawingObject(this.rectangle);
+                Create(this.rectangle);
             }
         }
 
-        public void ToolMouseMove(object sender, MouseEventArgs e)
+        public override void ToolMouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -66,7 +57,7 @@ namespace DrawingToolkit.Tools
             }
         }
 
-        public void ToolMouseUp(object sender, MouseEventArgs e)
+        public override void ToolMouseUp(object sender, MouseEventArgs e)
         {
             if (rectangle != null)
             {

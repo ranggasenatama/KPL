@@ -9,31 +9,20 @@ using System.Diagnostics;
 
 namespace DrawingToolkit.Tools
 {
-    public class ConnectorTool : ToolStripButton, ITool
+    public class ConnectorTool : CreateTool
     {
-        private ICanvas canvas;
         private Connector connector;
 
-        public Cursor Cursor
+        public override String Name
         {
             get
             {
-                return Cursors.Arrow;
+                return name;
             }
-        }
-
-        public ICanvas TargetCanvas
-        {
-            get
-            {
-                return this.canvas;
-            }
-
             set
             {
-                this.canvas = value;
+                this.name = value;
             }
-
         }
 
         public ConnectorTool()
@@ -44,14 +33,14 @@ namespace DrawingToolkit.Tools
             this.CheckOnClick = true;
         }
 
-        public void ToolMouseDown(object sender, MouseEventArgs e)
+        public override void ToolMouseDown(object sender, MouseEventArgs e)
         {
             connector = new Connector(new System.Drawing.Point(e.X, e.Y));
             connector.finishPoint = new System.Drawing.Point(e.X, e.Y);
-            canvas.AddDrawingObject(connector);
+            Create(this.connector);
         }
 
-        public void ToolMouseMove(object sender, MouseEventArgs e)
+        public override void ToolMouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -62,7 +51,7 @@ namespace DrawingToolkit.Tools
             }
         }
 
-        public void ToolMouseUp(object sender, MouseEventArgs e)
+        public override void ToolMouseUp(object sender, MouseEventArgs e)
         {
             if (this.connector != null)
             {

@@ -8,56 +8,46 @@ using System.Windows.Forms;
 
 namespace DrawingToolkit.Tools
 {
-    public class ClassTool : ToolStripButton, ITool
+    public class ClassDiagramTool : CreateTool
     {
-        private ICanvas canvas;
-        private Class classs;
+        private ClassDiagram classDiagram;
 
-        public Cursor Cursor
+        public override String Name
         {
             get
             {
-                return Cursors.Arrow;
-            }
-        }
-
-        public ICanvas TargetCanvas
-        {
-            get
-            {
-                return this.canvas;
+                return name;
             }
             set
             {
-                this.canvas = value;
+                this.name = value;
             }
         }
 
-        public ClassTool()
+        public ClassDiagramTool()
         {
-            this.Name = "Rectangle Tool";
-            this.ToolTipText = "Rectangle Tool";
+            this.Name = "Class Diagram Tool";
+            this.ToolTipText = "Class Diagram Tool";
             this.Image = IconSet.rectangle;
             this.CheckOnClick = true;
         }
 
-        public void ToolMouseDown(object sender, MouseEventArgs e)
+        public override void ToolMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.classs = new Class(e.X, e.Y);
-                System.Console.WriteLine(this.classs.State);
-                this.canvas.AddDrawingObject(this.classs);
+                this.classDiagram = new ClassDiagram(e.X, e.Y);
+                Create(this.classDiagram);
             }
         }
 
-        public void ToolMouseMove(object sender, MouseEventArgs e)
+        public override void ToolMouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                Rectangle rectangle1 = (this.classs.drawingObjects[0] as Rectangle);
-                Rectangle rectangle2 = (this.classs.drawingObjects[1] as Rectangle);
-                Rectangle rectangle3 = (this.classs.drawingObjects[2] as Rectangle);
+                Rectangle rectangle1 = (this.classDiagram.drawingObjects[0] as Rectangle);
+                Rectangle rectangle2 = (this.classDiagram.drawingObjects[1] as Rectangle);
+                Rectangle rectangle3 = (this.classDiagram.drawingObjects[2] as Rectangle);
                 int width = e.X - rectangle1.X;
                 int height = e.Y - rectangle1.Y;
                 height /= 3;
@@ -76,17 +66,17 @@ namespace DrawingToolkit.Tools
             }
         }
 
-        public void ToolMouseUp(object sender, MouseEventArgs e)
+        public override void ToolMouseUp(object sender, MouseEventArgs e)
         {
-            if (classs != null)
+            if (classDiagram != null)
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    this.classs.Select();
+                    this.classDiagram.Select();
                 }
                 else if (e.Button == MouseButtons.Right)
                 {
-                    canvas.RemoveDrawingObject(this.classs);
+                    canvas.RemoveDrawingObject(this.classDiagram);
                 }
             }
         }

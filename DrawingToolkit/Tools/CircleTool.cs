@@ -5,52 +5,44 @@ using System.Text;
 using System.Threading.Tasks;
 using DrawingToolkit.Shapes;
 using System.Windows.Forms;
+using DrawingToolkit.Command;
 
 namespace DrawingToolkit.Tools
 {
-    public class CircleTool : ToolStripButton, ITool
+    public class CircleTool : CreateTool
     {
-        private ICanvas canvas;
         private Circle circle;
 
-        public Cursor Cursor
+        public override String Name
         {
             get
             {
-                return Cursors.Arrow;
-            }
-        }
-
-        public ICanvas TargetCanvas
-        {
-            get
-            {
-                return this.canvas;
+                return name;
             }
             set
             {
-                this.canvas = value;
+                this.name = value;
             }
         }
 
         public CircleTool()
         {
-            this.Name = "Circle Tool";
+            this.name = "Circle Tool";
             this.ToolTipText = "Circle Tool";
             this.Image = IconSet.circle;
             this.CheckOnClick = true;
         }
 
-        public void ToolMouseDown(object sender, MouseEventArgs e)
+        public override void ToolMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 this.circle = new Circle(e.X, e.Y);
-                this.canvas.AddDrawingObject(this.circle);
+                Create(this.circle);
             }
         }
 
-        public void ToolMouseMove(object sender, MouseEventArgs e)
+        public override void ToolMouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -65,7 +57,7 @@ namespace DrawingToolkit.Tools
             }
         }
 
-        public void ToolMouseUp(object sender, MouseEventArgs e)
+        public override void ToolMouseUp(object sender, MouseEventArgs e)
         {
             if (circle != null)
             {

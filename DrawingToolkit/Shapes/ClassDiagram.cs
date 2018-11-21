@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace DrawingToolkit.Shapes
 {
-    class Class : DrawingObject
+    class ClassDiagram : DrawingObject
     {
         public List<DrawingObject> drawingObjects { get; private set; } = new List<DrawingObject>();
 
-        public Class(int initX, int initY) : base()
+        public ClassDiagram(int initX, int initY) : base()
         {
             Rectangle obj1 = new Rectangle(initX, initY);
             drawingObjects.Add(obj1);

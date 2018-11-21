@@ -90,12 +90,15 @@ namespace DrawingToolkit.Tools
 
         public void ToolMouseUp(object sender, MouseEventArgs e)
         {
-            int xAmount = xPrevInitial - xInitial;
-            int yAmount = yPrevInitial - yInitial;
-            selectedObject.Translate(-xAmount, -yAmount);
+            if (selectedObject != null)
+            {
+                int xAmount = xPrevInitial - xInitial;
+                int yAmount = yPrevInitial - yInitial;
+                selectedObject.Translate(-xAmount, -yAmount);
 
-            MoveCommand command = new MoveCommand(selectedObject, xAmount, yAmount);
-            canvas.ExecuteCommand(command);
+                MoveCommand command = new MoveCommand(selectedObject, xAmount, yAmount);
+                canvas.ExecuteCommand(command);
+            }
         }
     }
 }

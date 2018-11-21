@@ -8,30 +8,20 @@ using System.Windows.Forms;
 
 namespace DrawingToolkit.Tools
 {
-    public class LineTool : ToolStripButton, ITool
+    public class LineTool : CreateTool
     {
-        private ICanvas canvas;
         private Line line;
-        public Cursor Cursor
+
+        public override String Name
         {
             get
             {
-                return Cursors.Arrow;
+                return name;
             }
-        }
-
-        public ICanvas TargetCanvas
-        {
-            get
-            {
-                return this.canvas;
-            }
-
             set
             {
-                this.canvas = value;
+                this.name = value;
             }
-
         }
 
         public LineTool()
@@ -42,14 +32,14 @@ namespace DrawingToolkit.Tools
             this.CheckOnClick = true;
         }
 
-        public void ToolMouseDown(object sender, MouseEventArgs e)
+        public override void ToolMouseDown(object sender, MouseEventArgs e)
         {
             line = new Line(new System.Drawing.Point(e.X, e.Y));
             line.finishPoint = new System.Drawing.Point(e.X, e.Y);
-            canvas.AddDrawingObject(line);
+            Create(this.line);
         }
 
-        public void ToolMouseMove(object sender, MouseEventArgs e)
+        public override void ToolMouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -60,7 +50,7 @@ namespace DrawingToolkit.Tools
             }
         }
 
-        public void ToolMouseUp(object sender, MouseEventArgs e)
+        public override void ToolMouseUp(object sender, MouseEventArgs e)
         {
             if (this.line != null)
             {

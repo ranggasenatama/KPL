@@ -32,7 +32,7 @@ namespace DrawingToolkit
             this.toolbox.AddTool(new CircleTool());
             this.toolbox.AddTool(new ConnectorTool());
             this.toolbox.AddTool(new RectangleTool());
-            this.toolbox.AddTool(new ClassTool());
+            this.toolbox.AddTool(new ClassDiagramTool());
             this.toolbox.AddTool(new UndoTool());
             this.toolbox.AddTool(new RedoTool());
 

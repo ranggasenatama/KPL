@@ -32,7 +32,7 @@ namespace DrawingToolkit.Command
 
         public void Redo()
         {
-            if (commandStacks.Count > 0)
+            if (historyStacks.Count > 0)
             {
                 UndoableCommand command = historyStacks.Pop() as UndoableCommand;
                 commandStacks.Push(command);
