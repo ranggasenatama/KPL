@@ -65,10 +65,6 @@ namespace DrawingToolkit.Tools
                 {
                     this.circle.Select();
                 }
-                else if (e.Button == MouseButtons.Right)
-                {
-                    canvas.RemoveDrawingObject(this.circle);
-                }
             }
         }
     }

@@ -59,10 +59,6 @@ namespace DrawingToolkit.Tools
                     line.finishPoint = new System.Drawing.Point(e.X, e.Y);
                     line.Select();
                 }
-                else if (e.Button == MouseButtons.Right)
-                {
-                    canvas.RemoveDrawingObject(this.line);
-                }
             }
         }
     }

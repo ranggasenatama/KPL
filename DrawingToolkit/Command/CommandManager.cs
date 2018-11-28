@@ -16,6 +16,10 @@ namespace DrawingToolkit.Command
             command.execute();
             if (command is UndoableCommand)
             {
+                if (historyStacks.Count > 0)
+                {
+                    historyStacks.Clear();
+                }
                 commandStacks.Push(command);
             }
         }

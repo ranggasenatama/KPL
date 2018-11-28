@@ -74,10 +74,6 @@ namespace DrawingToolkit.Tools
                 {
                     this.classDiagram.Select();
                 }
-                else if (e.Button == MouseButtons.Right)
-                {
-                    canvas.RemoveDrawingObject(this.classDiagram);
-                }
             }
         }
     }

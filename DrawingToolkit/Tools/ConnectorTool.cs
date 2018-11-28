@@ -65,10 +65,6 @@ namespace DrawingToolkit.Tools
                     connector.initStartAndEndObject(startObject, endObject);
                     connector.Select();
                 }
-                else if (e.Button == MouseButtons.Right)
-                {
-                    canvas.RemoveDrawingObject(this.connector);
-                }
             }
         }
     }

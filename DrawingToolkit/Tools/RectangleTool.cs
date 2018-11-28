@@ -37,7 +37,6 @@ namespace DrawingToolkit.Tools
             if (e.Button == MouseButtons.Left)
             {
                 this.rectangle = new Rectangle(e.X, e.Y);
-                System.Console.WriteLine(this.rectangle.State);
                 Create(this.rectangle);
             }
         }
@@ -64,10 +63,6 @@ namespace DrawingToolkit.Tools
                 if (e.Button == MouseButtons.Left)
                 {
                     this.rectangle.Select();
-                }
-                else if (e.Button == MouseButtons.Right)
-                {
-                    canvas.RemoveDrawingObject(this.rectangle);
                 }
             }
         }
