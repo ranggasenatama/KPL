@@ -5,12 +5,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DrawingToolkit.Obsever;
 
 namespace DrawingToolkit
 {
-    public abstract class DrawingObject
+    public abstract class DrawingObject: Observerable
     {
         public Graphics Graphics { get; set; }
+        public Point centerPoint { get; set; }
 
         public abstract Boolean isSelected(Point mouse);
         public abstract void isNotSelected();
@@ -36,9 +38,6 @@ namespace DrawingToolkit
         public abstract void RenderOnPreview();
         public abstract void RenderOnEditingView();
         public abstract void RenderOnStaticView();
-        //public abstract void Add(DrawingObject obj);
-        //public abstract void Remove(DrawingObject obj);
-        //public abstract void GetChild();
 
         public virtual void ChangeState(DrawingState drawingState)
         {

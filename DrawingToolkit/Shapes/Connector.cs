@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using DrawingToolkit.Obsever;
 
 namespace DrawingToolkit.Shapes
 {
-    public class Connector: DrawingObject
+    public class Connector: DrawingObject, IObserver
     {
         private const double EPSILON = 3.0;
 
@@ -40,14 +41,14 @@ namespace DrawingToolkit.Shapes
         {
             this.start = start;
             this.end = end;
-            //start.Observable += Update;
-            //end.Observable += Update;
+            start.attach(this);
+            end.attach(this);
             Debug.WriteLine("init "+start);
             Debug.WriteLine("init "+end);
-            Update();
+            isValid();
         }
 
-        public void Update()
+        public void isValid()
         {
             Debug.WriteLine(start);
             Debug.WriteLine(end);
@@ -56,8 +57,6 @@ namespace DrawingToolkit.Shapes
                 Debug.WriteLine("null");
                 return;
             }
-            //startPoint = start.GetPoint;
-            //finishPoint = end.GetPoint;
         }
 
         public override bool isSelected(Point mouse)
@@ -135,6 +134,19 @@ namespace DrawingToolkit.Shapes
         {
             this.startPoint = new Point(this.startPoint.X + xAmount, this.startPoint.Y + yAmount);
             this.finishPoint = new Point(this.finishPoint.X + xAmount, this.finishPoint.Y + yAmount);
+        }
+
+        //update
+        public void update(Observerable observerable)
+        {
+            if (observerable == this.start)
+            {
+                this.startPoint = (observerable as DrawingObject).centerPoint;
+            }
+            else if (observerable == this.end)
+            {
+                this.finishPoint = (observerable as DrawingObject).centerPoint;
+            }
         }
     }
 }

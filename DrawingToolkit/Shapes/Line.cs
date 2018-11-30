@@ -106,6 +106,8 @@ namespace DrawingToolkit.Shapes
         {
             this.startPoint = new Point(this.startPoint.X + xAmount, this.startPoint.Y + yAmount);
             this.finishPoint = new Point(this.finishPoint.X + xAmount, this.finishPoint.Y + yAmount);
+            this.centerPoint = new Point((this.startPoint.X+this.finishPoint.X)/2, (this.startPoint.Y+this.finishPoint.Y)/2);
+            notify();
         }
     }
 }

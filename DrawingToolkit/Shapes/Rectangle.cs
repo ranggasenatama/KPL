@@ -15,8 +15,6 @@ namespace DrawingToolkit.Shapes
         public int Width { get; set; }
         public int Height { get; set; }
 
-        public Action Observable { get; set; }
-
         private Pen pen;
 
         public Rectangle() : base()
@@ -83,6 +81,8 @@ namespace DrawingToolkit.Shapes
         {
             this.X += xAmount;
             this.Y += yAmount;
+            this.centerPoint = new Point(this.X, this.Y);
+            notify();
         }
     }
 }

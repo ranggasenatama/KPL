@@ -81,6 +81,8 @@ namespace DrawingToolkit.Shapes
         {
             this.cirX += xAmount;
             this.cirY += yAmount;
+            this.centerPoint = new Point(this.cirX, this.cirY);
+            notify();
         }
     }
 }

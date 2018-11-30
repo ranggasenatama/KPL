@@ -13,6 +13,7 @@ namespace DrawingToolkit.Tools
     {
         private Connector connector;
 
+
         public override String Name
         {
             get
@@ -60,8 +61,6 @@ namespace DrawingToolkit.Tools
                     connector.finishPoint = new System.Drawing.Point(e.X, e.Y);
                     DrawingObject startObject = canvas.GetObjectAt(connector.startPoint.X, connector.startPoint.Y);
                     DrawingObject endObject = canvas.GetObjectAt(connector.finishPoint.X, connector.finishPoint.Y);
-                    Debug.WriteLine(startObject);
-                    Debug.WriteLine(endObject);
                     connector.initStartAndEndObject(startObject, endObject);
                     connector.Select();
                 }

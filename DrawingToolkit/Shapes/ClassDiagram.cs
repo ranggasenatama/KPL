@@ -102,6 +102,8 @@ namespace DrawingToolkit.Shapes
             {
                 obj.Translate(xAmount, yAmount);
             }
+            this.centerPoint = drawingObjects[1].centerPoint;
+            notify();
         }
     }
 }
