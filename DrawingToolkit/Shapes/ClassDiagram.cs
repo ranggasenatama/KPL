@@ -14,11 +14,11 @@ namespace DrawingToolkit.Shapes
 
         public ClassDiagram(int initX, int initY) : base()
         {
-            Rectangle obj1 = new Rectangle(initX, initY);
+            RectangleWithText obj1 = new RectangleWithText(initX, initY, "Class");
             drawingObjects.Add(obj1);
-            Rectangle obj2 = new Rectangle(initX, initY);
+            RectangleWithText obj2 = new RectangleWithText(initX, initY, "Properties");
             drawingObjects.Add(obj2);
-            Rectangle obj3 = new Rectangle(initX, initY);
+            RectangleWithText obj3 = new RectangleWithText(initX, initY, "Method");
             drawingObjects.Add(obj3);
         }
 
@@ -27,9 +27,7 @@ namespace DrawingToolkit.Shapes
             base.ChangeState(drawingState);
             foreach (DrawingObject obj in this.drawingObjects)
             {
-                //obj.Graphics = Graphics;
                 obj.ChangeState(drawingState);
-                //obj.State.Draw(obj);
             }
         }
 
