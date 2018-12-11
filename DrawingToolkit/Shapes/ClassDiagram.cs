@@ -16,7 +16,7 @@ namespace DrawingToolkit.Shapes
         {
             RectangleWithText obj1 = new RectangleWithText(initX, initY, "Class");
             listDrawingObjects.Add(obj1);
-            RectangleWithText obj2 = new RectangleWithText(initX, initY, "Properties");
+            RectangleWithText obj2 = new RectangleWithText(initX, initY, "Property");
             listDrawingObjects.Add(obj2);
             RectangleWithText obj3 = new RectangleWithText(initX, initY, "Method");
             listDrawingObjects.Add(obj3);
@@ -25,7 +25,7 @@ namespace DrawingToolkit.Shapes
         public void AddPropertyText()
         {
             RectangleWithText rectangleWithTextProperty = (listDrawingObjects[1] as RectangleWithText);
-            Text text = new Text(rectangleWithTextProperty.X, rectangleWithTextProperty.Y + rectangleWithTextProperty.Height, "Properties");
+            Text text = new Text(rectangleWithTextProperty.X, rectangleWithTextProperty.Y + rectangleWithTextProperty.Height, "Property");
             rectangleWithTextProperty.Add(text);
             rectangleWithTextProperty.AddHeight();
             RectangleWithText rectangleWithTextMethod = (listDrawingObjects[2] as RectangleWithText);

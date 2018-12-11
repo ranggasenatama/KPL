@@ -69,10 +69,12 @@ namespace DrawingToolkit.Shapes
         public void UpdateY(int Y)
         {
             this.Y = Y;
+            int prevYText = this.Y;
             foreach (DrawingObject obj in this.drawingObjects)
             {
                 Text text = obj as Text;
-                text.Y += Y;
+                text.Y = prevYText;
+                prevYText = text.Y;
             }
         }
 
