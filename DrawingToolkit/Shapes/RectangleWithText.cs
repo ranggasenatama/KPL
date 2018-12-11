@@ -74,7 +74,6 @@ namespace DrawingToolkit.Shapes
             {
                 Text text = obj as Text;
                 text.Y += prevYText;
-                //prevYText = text.Y;
             }
         }
 

@@ -35,7 +35,7 @@ namespace DrawingToolkit.Shapes
         public void AddMethodText()
         {
             RectangleWithText rectangleWithTextMethod = (listDrawingObjects[2] as RectangleWithText);
-            Text text = new Text(rectangleWithTextMethod.X, rectangleWithTextMethod.Y + rectangleWithTextMethod.Height, "Property");
+            Text text = new Text(rectangleWithTextMethod.X, rectangleWithTextMethod.Y + rectangleWithTextMethod.Height, "Method");
             rectangleWithTextMethod.Add(text);
             rectangleWithTextMethod.AddHeight();
         }
