@@ -10,22 +10,32 @@ namespace DrawingToolkit.Shapes
 {
     class ClassDiagram : DrawingObject
     {
-        public List<DrawingObject> drawingObjects { get; private set; } = new List<DrawingObject>();
+        public List<DrawingObject> listDrawingObjects { get; private set; } = new List<DrawingObject>();
 
         public ClassDiagram(int initX, int initY) : base()
         {
             RectangleWithText obj1 = new RectangleWithText(initX, initY, "Class");
-            drawingObjects.Add(obj1);
+            listDrawingObjects.Add(obj1);
             RectangleWithText obj2 = new RectangleWithText(initX, initY, "Properties");
-            drawingObjects.Add(obj2);
+            listDrawingObjects.Add(obj2);
             RectangleWithText obj3 = new RectangleWithText(initX, initY, "Method");
-            drawingObjects.Add(obj3);
+            listDrawingObjects.Add(obj3);
+        }
+
+        public void AddPropertyText()
+        {
+            RectangleWithText rectangleWithTextProperty = (listDrawingObjects[1] as RectangleWithText);
+            Text text = new Text(rectangleWithTextProperty.X, rectangleWithTextProperty.Y + rectangleWithTextProperty.Height, "Properties");
+            rectangleWithTextProperty.Add(text);
+            rectangleWithTextProperty.AddHeight();
+            RectangleWithText rectangleWithTextMethod = (listDrawingObjects[2] as RectangleWithText);
+            rectangleWithTextMethod.UpdateY(rectangleWithTextProperty.Height + rectangleWithTextProperty.Y);
         }
 
         public override void ChangeState(DrawingState drawingState)
         {
             base.ChangeState(drawingState);
-            foreach (DrawingObject obj in this.drawingObjects)
+            foreach (DrawingObject obj in this.listDrawingObjects)
             {
                 obj.ChangeState(drawingState);
             }
@@ -33,7 +43,7 @@ namespace DrawingToolkit.Shapes
 
         public override void Draw()
         {
-            foreach (DrawingObject obj in this.drawingObjects)
+            foreach (DrawingObject obj in this.listDrawingObjects)
             {
                 obj.Graphics = Graphics;
                 obj.State.Draw(obj);
@@ -42,7 +52,7 @@ namespace DrawingToolkit.Shapes
 
         public override bool isSelected(Point mouse)
         {
-            foreach (DrawingObject obj in this.drawingObjects)
+            foreach (DrawingObject obj in this.listDrawingObjects)
             {
                 if (obj.isSelected(mouse))
                 {
@@ -59,7 +69,7 @@ namespace DrawingToolkit.Shapes
 
         public override bool Intersect(int xTest, int yTest)
         {
-            foreach (DrawingObject obj in this.drawingObjects)
+            foreach (DrawingObject obj in this.listDrawingObjects)
             {
                 if (obj.Intersect(xTest, yTest))
                 {
@@ -71,7 +81,7 @@ namespace DrawingToolkit.Shapes
 
         public override void RenderOnStaticView()
         {
-            foreach (DrawingObject obj in this.drawingObjects)
+            foreach (DrawingObject obj in this.listDrawingObjects)
             {
                 obj.Graphics = Graphics;
                 obj.State.Draw(obj);
@@ -79,7 +89,7 @@ namespace DrawingToolkit.Shapes
         }
         public override void RenderOnEditingView()
         {
-            foreach (DrawingObject obj in this.drawingObjects)
+            foreach (DrawingObject obj in this.listDrawingObjects)
             {
                 obj.Graphics = Graphics;
                 obj.State.Draw(obj);
@@ -87,7 +97,7 @@ namespace DrawingToolkit.Shapes
         }
         public override void RenderOnPreview()
         {
-            foreach (DrawingObject obj in this.drawingObjects)
+            foreach (DrawingObject obj in this.listDrawingObjects)
             {
                 obj.Graphics = Graphics;
                 obj.State.Draw(obj);
@@ -96,11 +106,11 @@ namespace DrawingToolkit.Shapes
 
         public override void Translate(int xAmount, int yAmount)
         {
-            foreach (DrawingObject obj in this.drawingObjects)
+            foreach (DrawingObject obj in this.listDrawingObjects)
             {
                 obj.Translate(xAmount, yAmount);
             }
-            this.centerPoint = drawingObjects[1].centerPoint;
+            this.centerPoint = listDrawingObjects[1].centerPoint;
             notify();
         }
     }

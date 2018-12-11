@@ -61,6 +61,21 @@ namespace DrawingToolkit.Shapes
             drawingObjects.Add(obj);
         }
 
+        public void AddHeight()
+        {
+            this.Height += this.Height / drawingObjects.Count;
+        }
+
+        public void UpdateY(int Y)
+        {
+            this.Y = Y;
+            foreach (DrawingObject obj in this.drawingObjects)
+            {
+                Text text = obj as Text;
+                text.Y += Y;
+            }
+        }
+
         public void Remove(DrawingObject obj)
         {
             drawingObjects.Remove(obj);

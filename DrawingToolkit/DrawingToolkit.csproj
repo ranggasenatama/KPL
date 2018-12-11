@@ -102,6 +102,9 @@
     <Compile Include="Tools\LineTool.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Tools\PropertyTextTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Tools\RectangleTool.cs">
       <SubType>Component</SubType>
     </Compile>
