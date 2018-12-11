@@ -32,6 +32,14 @@ namespace DrawingToolkit.Shapes
             rectangleWithTextMethod.UpdateY(rectangleWithTextProperty.Height + rectangleWithTextProperty.Y);
         }
 
+        public void AddMethodText()
+        {
+            RectangleWithText rectangleWithTextMethod = (listDrawingObjects[2] as RectangleWithText);
+            Text text = new Text(rectangleWithTextMethod.X, rectangleWithTextMethod.Y + rectangleWithTextMethod.Height, "Property");
+            rectangleWithTextMethod.Add(text);
+            rectangleWithTextMethod.AddHeight();
+        }
+
         public override void ChangeState(DrawingState drawingState)
         {
             base.ChangeState(drawingState);
