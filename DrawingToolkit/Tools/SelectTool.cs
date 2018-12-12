@@ -44,22 +44,6 @@ namespace DrawingToolkit.Tools
         }
         public void ToolMouseDown(object sender, MouseEventArgs e)
         {
-            /*List<DrawingObject> ListObjects = this.canvas.GetListObjects();
-            foreach (DrawingObject dobject in ListObjects)
-            {
-
-                if (dobject.isSelected(e.Location))
-                {
-
-                    this.canvas.Repaint();
-                }
-                else
-                {
-                    dobject.isNotSelected();
-                    this.canvas.Repaint();
-                }
-
-            }*/
             this.xInitial = e.X;
             this.yInitial = e.Y;
             this.xPrevInitial = e.X;

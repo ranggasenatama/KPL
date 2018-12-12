@@ -35,6 +35,8 @@ namespace DrawingToolkit
             this.toolbox.AddTool(new ClassDiagramTool());
             this.toolbox.AddTool(new UndoTool());
             this.toolbox.AddTool(new RedoTool());
+            this.toolbox.AddTool(new PropertyTextTool());
+            this.toolbox.AddTool(new MethodTextTool());
 
             //this.toolbox.AddTool(new StatefulLineTool());
             this.toolbox.ToolSelected += Toolbox_ToolSelected;
