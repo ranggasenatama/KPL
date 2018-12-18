@@ -25,19 +25,36 @@ namespace DrawingToolkit.Shapes
         public void AddClassText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[0] as RectangleWithText);
-            rectangleWithText.AddText(value);
+            int xText = rectangleWithText.X + rectangleWithText.Width / 3;
+            int yText = rectangleWithText.Y + rectangleWithText.Height / 3;
+            rectangleWithText.AddText(value, xText, yText);
         }
 
         public void AddPropertyText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[1] as RectangleWithText);
-            rectangleWithText.AddText(value);
+            int xText = rectangleWithText.X;
+            int yText = rectangleWithText.Y + rectangleWithText.Height;
+            rectangleWithText.AddText(value, xText, yText);
+            rectangleWithText.UpdateHeight();
+
+            int yMethod = rectangleWithText.Height + rectangleWithText.Y;
+            UpdateYMethod(yMethod);
         }
 
         public void AddMethodText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
-            rectangleWithText.AddText(value);
+            int xText = rectangleWithText.X;
+            int yText = rectangleWithText.Y + rectangleWithText.Height;
+            rectangleWithText.AddText(value, xText, yText);
+            rectangleWithText.UpdateHeight();
+        }
+
+        public void UpdateYMethod(int Y)
+        {
+            RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
+            rectangleWithText.UpdateYMembers(Y);
         }
 
         public override void ChangeState(DrawingState drawingState)

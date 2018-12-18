@@ -15,7 +15,6 @@ namespace DrawingToolkit.Tools
     {
         private Connector connector;
 
-
         public override String Name
         {
             get

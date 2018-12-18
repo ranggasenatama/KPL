@@ -51,32 +51,35 @@
     <Compile Include="Command\CreateCommand.cs" />
     <Compile Include="Command\MoveCommand.cs" />
     <Compile Include="Command\UndoableCommand.cs" />
+    <Compile Include="Layer\AddTextTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Layer\ConnectTool.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Layer\CreateTool.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DefaultCanvas.cs">
+    <Compile Include="InterfaceDefault\DefaultCanvas.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DrawingObject.cs" />
     <Compile Include="DrawingState.cs" />
-    <Compile Include="DrawingWindow.cs">
+    <Compile Include="Window\DrawingWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DrawingWindow.Designer.cs">
+    <Compile Include="Window\DrawingWindow.Designer.cs">
       <DependentUpon>DrawingWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="ICanvas.cs" />
-    <Compile Include="ICommand.cs" />
+    <Compile Include="Interface\ICanvas.cs" />
+    <Compile Include="Interface\ICommand.cs" />
     <Compile Include="IconSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IconSet.resx</DependentUpon>
     </Compile>
-    <Compile Include="ITool.cs" />
-    <Compile Include="IToolbox.cs" />
+    <Compile Include="Interface\ITool.cs" />
+    <Compile Include="Interface\IToolbox.cs" />
     <Compile Include="Obsever\IObserver.cs" />
     <Compile Include="Obsever\Observerable.cs" />
     <Compile Include="Program.cs" />
@@ -86,7 +89,7 @@
     <Compile Include="Shapes\ClassDiagram.cs" />
     <Compile Include="Shapes\Connector.cs" />
     <Compile Include="Shapes\Line.cs" />
-    <Compile Include="DefaultToolBox.cs">
+    <Compile Include="InterfaceDefault\DefaultToolBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Shapes\Rectangle.cs" />
@@ -94,10 +97,10 @@
     <Compile Include="States\EditState.cs" />
     <Compile Include="States\PreviewState.cs" />
     <Compile Include="States\StaticState.cs" />
-    <Compile Include="TextBoxWindow.cs">
+    <Compile Include="Window\TextBoxWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TextBoxWindow.Designer.cs">
+    <Compile Include="Window\TextBoxWindow.Designer.cs">
       <DependentUpon>TextBoxWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\CircleTool.cs">
@@ -133,7 +136,7 @@
     <Compile Include="Tools\UndoTool.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="DrawingWindow.resx">
+    <EmbeddedResource Include="Window\DrawingWindow.resx">
       <DependentUpon>DrawingWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IconSet.resx">
@@ -149,7 +152,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="TextBoxWindow.resx">
+    <EmbeddedResource Include="Window\TextBoxWindow.resx">
       <DependentUpon>TextBoxWindow.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

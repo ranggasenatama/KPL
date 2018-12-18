@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -54,9 +55,10 @@ namespace DrawingToolkit.Shapes
             }
         }
 
-        public void AddText(string value)
+        public void AddText(string value, int x, int y)
         {
-            Text text = new Text(this.X, this.Y, value);
+            Debug.WriteLine("add text");
+            Text text = new Text(x, y, value);
             Add(text);
         }
 
@@ -65,12 +67,12 @@ namespace DrawingToolkit.Shapes
             drawingObjects.Add(obj);
         }
 
-        public void AddHeight()
+        public void UpdateHeight()
         {
             this.Height += this.Height / drawingObjects.Count;
         }
 
-        public void UpdateY(int Y)
+        public void UpdateYMembers(int Y)
         {
             int prevYText = Y - this.Y;
             this.Y = Y;

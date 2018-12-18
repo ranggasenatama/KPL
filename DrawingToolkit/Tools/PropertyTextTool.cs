@@ -6,66 +6,55 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DrawingToolkit.Shapes;
+using DrawingToolkit.Layer;
 
 namespace DrawingToolkit.Tools
 {
-    public class PropertyTextTool : ToolStripButton, ITool
+    public class PropertyTextTool : AddTextTool
     {
-        private ICanvas canvas;
         private DrawingObject selectedObject;
 
-        public Cursor Cursor
+        public override String Name
         {
             get
             {
-                return Cursors.Arrow;
-            }
-        }
-
-        public ICanvas TargetCanvas
-        {
-            get
-            {
-                return this.canvas;
+                return name;
             }
             set
             {
-                this.canvas = value;
+                this.name = value;
             }
         }
 
         public PropertyTextTool()
         {
-            this.Name = "Property Text Tool";
-            this.ToolTipText = "Property Text Tool";
+            this.Name = "Add Property Text Tool";
+            this.ToolTipText = "Add Property Text Tool";
             this.Image = IconSet.cursor;
             this.CheckOnClick = true;
         }
-        public void ToolMouseDown(object sender, MouseEventArgs e)
+
+        public override void ToolMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && canvas != null)
             {
                 canvas.DeselectAllObjects();
                 selectedObject = canvas.SelectObjectAt(e.X, e.Y);
+                
                 if (selectedObject is ClassDiagram)
                 {
                     ClassDiagram classDiagram = (selectedObject as ClassDiagram);
-                    RectangleWithText rectangleWithTextProperty = (classDiagram.listDrawingObjects[1] as RectangleWithText);
-                    Text text = new Text(rectangleWithTextProperty.X, rectangleWithTextProperty.Y + rectangleWithTextProperty.Height, "Property");
-                    rectangleWithTextProperty.Add(text);
-                    rectangleWithTextProperty.AddHeight();
-                    RectangleWithText rectangleWithTextMethod = (classDiagram.listDrawingObjects[2] as RectangleWithText);
-                    rectangleWithTextMethod.UpdateY(rectangleWithTextProperty.Height + rectangleWithTextProperty.Y);
+                    classDiagram.AddPropertyText("halo");
                 }
             }
         }
 
-        public void ToolMouseMove(object sender, MouseEventArgs e)
+        public override void ToolMouseMove(object sender, MouseEventArgs e)
         {
             
         }
 
-        public void ToolMouseUp(object sender, MouseEventArgs e)
+        public override void ToolMouseUp(object sender, MouseEventArgs e)
         {
             
         }

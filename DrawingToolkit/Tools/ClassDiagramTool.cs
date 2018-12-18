@@ -58,16 +58,16 @@ namespace DrawingToolkit.Tools
                 {
                     //1
                     rectangle1.Width = width;
-                    rectangle1.Height = height;
+                    rectangle1.Height = height * 2;
                     
                     //2
                     rectangle2.Width = width;
-                    rectangle2.Height = height;
+                    rectangle2.Height = height / 2;
                     rectangle2.Y = rectangle1.Y + rectangle1.Height;
                     
                     //3
                     rectangle3.Width = width;
-                    rectangle3.Height = height;
+                    rectangle3.Height = height / 2;
                     rectangle3.Y = rectangle2.Y + rectangle1.Height;
                 }
             }
@@ -87,7 +87,6 @@ namespace DrawingToolkit.Tools
                         {
                             textBoxWindow.ShowDialog();
                         }
-                        Debug.WriteLine(textBoxWindow.value);
                         string formValue = textBoxWindow.value;
                         this.classDiagram.AddClassText(formValue);
                     }

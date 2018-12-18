@@ -6,42 +6,36 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DrawingToolkit.Shapes;
+using DrawingToolkit.Layer;
+
 
 namespace DrawingToolkit.Tools
 {
-    public class MethodTextTool : ToolStripButton, ITool
+    public class MethodTextTool : AddTextTool
     {
-        private ICanvas canvas;
         private DrawingObject selectedObject;
 
-        public Cursor Cursor
+        public override String Name
         {
             get
             {
-                return Cursors.Arrow;
-            }
-        }
-
-        public ICanvas TargetCanvas
-        {
-            get
-            {
-                return this.canvas;
+                return name;
             }
             set
             {
-                this.canvas = value;
+                this.name = value;
             }
         }
 
         public MethodTextTool()
         {
-            this.Name = "Method Text Tool";
-            this.ToolTipText = "Method Text Tool";
+            this.Name = "Add Method Text Tool";
+            this.ToolTipText = "Add Method Text Tool";
             this.Image = IconSet.cursor;
             this.CheckOnClick = true;
         }
-        public void ToolMouseDown(object sender, MouseEventArgs e)
+
+        public override void ToolMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && canvas != null)
             {
@@ -50,22 +44,19 @@ namespace DrawingToolkit.Tools
                 if (selectedObject is ClassDiagram)
                 {
                     ClassDiagram classDiagram = (selectedObject as ClassDiagram);
-                    RectangleWithText rectangleWithTextMethod = (classDiagram.listDrawingObjects[2] as RectangleWithText);
-                    Text text = new Text(rectangleWithTextMethod.X, rectangleWithTextMethod.Y + rectangleWithTextMethod.Height, "Method");
-                    rectangleWithTextMethod.Add(text);
-                    rectangleWithTextMethod.AddHeight();
+                    classDiagram.AddMethodText("halo");
                 }
             }
         }
 
-        public void ToolMouseMove(object sender, MouseEventArgs e)
+        public override void ToolMouseMove(object sender, MouseEventArgs e)
         {
-
+            
         }
 
-        public void ToolMouseUp(object sender, MouseEventArgs e)
+        public override void ToolMouseUp(object sender, MouseEventArgs e)
         {
-
+            
         }
     }
 }
