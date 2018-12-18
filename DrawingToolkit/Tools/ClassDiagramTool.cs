@@ -84,6 +84,15 @@ namespace DrawingToolkit.Tools
             {
                 if (e.Button == MouseButtons.Left)
                 {
+                    DrawingObject obj = canvas.GetObjectAt(e.X, e.Y);
+                    string passingText = "halo";
+                    using (TextBoxWindow textBoxWindow = new TextBoxWindow(passingText, obj, canvas))
+                    {
+                        if (textBoxWindow.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                        {
+                            textBoxWindow.ShowDialog();
+                        }
+                    }
                     this.classDiagram.Select();
                 }
             }

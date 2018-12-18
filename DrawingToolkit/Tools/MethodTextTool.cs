@@ -50,7 +50,10 @@ namespace DrawingToolkit.Tools
                 if (selectedObject is ClassDiagram)
                 {
                     ClassDiagram classDiagram = (selectedObject as ClassDiagram);
-                    classDiagram.AddMethodText();
+                    RectangleWithText rectangleWithTextMethod = (classDiagram.listDrawingObjects[2] as RectangleWithText);
+                    Text text = new Text(rectangleWithTextMethod.X, rectangleWithTextMethod.Y + rectangleWithTextMethod.Height, "Method");
+                    rectangleWithTextMethod.Add(text);
+                    rectangleWithTextMethod.AddHeight();
                 }
             }
         }

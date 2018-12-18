@@ -22,22 +22,9 @@ namespace DrawingToolkit.Shapes
             listDrawingObjects.Add(obj3);
         }
 
-        public void AddPropertyText()
-        {
-            RectangleWithText rectangleWithTextProperty = (listDrawingObjects[1] as RectangleWithText);
-            Text text = new Text(rectangleWithTextProperty.X, rectangleWithTextProperty.Y + rectangleWithTextProperty.Height, "Property");
-            rectangleWithTextProperty.Add(text);
-            rectangleWithTextProperty.AddHeight();
-            RectangleWithText rectangleWithTextMethod = (listDrawingObjects[2] as RectangleWithText);
-            rectangleWithTextMethod.UpdateY(rectangleWithTextProperty.Height + rectangleWithTextProperty.Y);
-        }
-
         public void AddMethodText()
         {
-            RectangleWithText rectangleWithTextMethod = (listDrawingObjects[2] as RectangleWithText);
-            Text text = new Text(rectangleWithTextMethod.X, rectangleWithTextMethod.Y + rectangleWithTextMethod.Height, "Method");
-            rectangleWithTextMethod.Add(text);
-            rectangleWithTextMethod.AddHeight();
+            
         }
 
         public override void ChangeState(DrawingState drawingState)
