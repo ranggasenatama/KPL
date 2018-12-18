@@ -64,6 +64,10 @@ namespace DrawingToolkit.Shapes
                 y = this.Y + this.Height;
                 UpdateHeight();
             }
+            else
+            {
+               this.Height = 16;
+            }
             Text text = new Text(x, y, value);
             Add(text);
         }
@@ -75,7 +79,7 @@ namespace DrawingToolkit.Shapes
 
         public void UpdateHeight()
         {
-            this.Height += this.Height / drawingObjects.Count;
+            this.Height += 16;
         }
 
         public void UpdateYMembers(int Y)

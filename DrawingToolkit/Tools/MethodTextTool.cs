@@ -44,7 +44,8 @@ namespace DrawingToolkit.Tools
                 if (selectedObject is ClassDiagram)
                 {
                     ClassDiagram classDiagram = (selectedObject as ClassDiagram);
-                    classDiagram.AddMethodText("halo");
+                    string value = PopUpForm("Method Name");
+                    classDiagram.AddMethodText(value);
                 }
             }
         }

@@ -43,6 +43,20 @@ namespace DrawingToolkit.Layer
             this.canvas.ExecuteCommand(command);
         }
 
+        protected string PopUpForm(string placeholder)
+        {
+            string formValue = "";
+            using (TextBoxWindow textBoxWindow = new TextBoxWindow(placeholder))
+            {
+                if (textBoxWindow.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    textBoxWindow.ShowDialog();
+                }
+                formValue = textBoxWindow.value;
+            }
+            return formValue;
+        }
+
         public abstract void ToolMouseDown(object sender, MouseEventArgs e);
 
         public abstract void ToolMouseMove(object sender, MouseEventArgs e);

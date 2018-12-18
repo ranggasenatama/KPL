@@ -40,11 +40,11 @@ namespace DrawingToolkit.Tools
             {
                 canvas.DeselectAllObjects();
                 selectedObject = canvas.SelectObjectAt(e.X, e.Y);
-                
                 if (selectedObject is ClassDiagram)
                 {
                     ClassDiagram classDiagram = (selectedObject as ClassDiagram);
-                    classDiagram.AddPropertyText("halo");
+                    string value = PopUpForm("Property Name");
+                    classDiagram.AddPropertyText(value);
                 }
             }
         }

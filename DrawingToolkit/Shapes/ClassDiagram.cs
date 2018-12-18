@@ -22,38 +22,6 @@ namespace DrawingToolkit.Shapes
             listDrawingObjects.Add(obj3);
         }
 
-        public void AddClassText(string value)
-        {
-            RectangleWithText rectangleWithText = (listDrawingObjects[0] as RectangleWithText);
-            int xText = rectangleWithText.X + rectangleWithText.Width / 3;
-            int yText = rectangleWithText.Y + rectangleWithText.Height / 3;
-            Text text = new Text(xText, yText, value);
-            rectangleWithText.Add(text);
-        }
-
-        public void AddPropertyText(string value)
-        {
-            RectangleWithText rectangleWithText = (listDrawingObjects[1] as RectangleWithText);
-            rectangleWithText.AddText(value);
-
-            int yMethod = rectangleWithText.Height + rectangleWithText.Y;
-            UpdateYMethod(yMethod);
-        }
-
-        public void AddMethodText(string value)
-        {
-            RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
-            int xText = rectangleWithText.X;
-            int yText = rectangleWithText.Y + rectangleWithText.Height;
-            rectangleWithText.AddText(value);
-        }
-
-        public void UpdateYMethod(int Y)
-        {
-            RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
-            rectangleWithText.UpdateYMembers(Y);
-        }
-
         public override void ChangeState(DrawingState drawingState)
         {
             base.ChangeState(drawingState);
@@ -134,6 +102,38 @@ namespace DrawingToolkit.Shapes
             }
             this.centerPoint = listDrawingObjects[1].centerPoint;
             notify();
+        }
+
+        public void AddClassText(string value)
+        {
+            RectangleWithText rectangleWithText = (listDrawingObjects[0] as RectangleWithText);
+            int xText = rectangleWithText.X + rectangleWithText.Width / 3;
+            int yText = rectangleWithText.Y + rectangleWithText.Height / 3;
+            Text text = new Text(xText, yText, value);
+            rectangleWithText.Add(text);
+        }
+
+        public void AddPropertyText(string value)
+        {
+            RectangleWithText rectangleWithText = (listDrawingObjects[1] as RectangleWithText);
+            rectangleWithText.AddText(value);
+
+            int yMethod = rectangleWithText.Height + rectangleWithText.Y;
+            UpdateYMethod(yMethod);
+        }
+
+        public void AddMethodText(string value)
+        {
+            RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
+            int xText = rectangleWithText.X;
+            int yText = rectangleWithText.Y + rectangleWithText.Height;
+            rectangleWithText.AddText(value);
+        }
+
+        public void UpdateYMethod(int Y)
+        {
+            RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
+            rectangleWithText.UpdateYMembers(Y);
         }
     }
 }
