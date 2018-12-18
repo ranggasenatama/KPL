@@ -136,7 +136,9 @@ namespace DrawingToolkit.Shapes
             }
             this.X += xAmount;
             this.Y += yAmount;
-            this.centerPoint = drawingObjects[0].centerPoint;
+            int centerOfX = this.X + Width / 2;
+            int centerOfY = this.Y + Height / 2;
+            this.centerPoint = new Point(centerOfX, centerOfY);
             notify();
         }
     }
