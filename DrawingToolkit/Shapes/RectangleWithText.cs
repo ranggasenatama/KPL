@@ -95,6 +95,7 @@ namespace DrawingToolkit.Shapes
         {
             this.pen.Color = Color.Black;
             this.pen.DashStyle = DashStyle.Solid;
+            Graphics.FillRectangle(Brushes.White, X, Y, Width, Height);
             Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
             foreach (DrawingObject obj in this.drawingObjects)
             {
@@ -106,6 +107,7 @@ namespace DrawingToolkit.Shapes
         {
             this.pen.Color = Color.Blue;
             this.pen.DashStyle = DashStyle.Solid;
+            Graphics.FillRectangle(Brushes.White, X, Y, Width, Height);
             Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
             foreach (DrawingObject obj in this.drawingObjects)
             {
@@ -117,6 +119,7 @@ namespace DrawingToolkit.Shapes
         {
             this.pen.Color = Color.Red;
             this.pen.DashStyle = DashStyle.DashDot;
+            Graphics.FillRectangle(Brushes.White, X, Y, Width, Height);
             Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
             foreach (DrawingObject obj in this.drawingObjects)
             {

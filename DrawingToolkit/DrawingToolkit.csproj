@@ -47,10 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Command\CommandManager.cs" />
+    <Compile Include="Command\ConnectorCommand.cs" />
     <Compile Include="Command\CreateCommand.cs" />
     <Compile Include="Command\MoveCommand.cs" />
     <Compile Include="Command\UndoableCommand.cs" />
-    <Compile Include="CreateTool.cs">
+    <Compile Include="Layer\ConnectTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Layer\CreateTool.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DefaultCanvas.cs">

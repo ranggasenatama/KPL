@@ -96,6 +96,11 @@ namespace DrawingToolkit
             this.drawingObjects.Add(drawingObject);
         }
 
+        public void AddDrawingObjectInZeroIndex(DrawingObject drawingObject)
+        {
+            this.drawingObjects.Insert(0, drawingObject);
+        }
+
         public void CheckSelectedObject()
         {
             throw new NotImplementedException();

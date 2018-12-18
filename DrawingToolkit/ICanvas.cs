@@ -13,6 +13,7 @@ namespace DrawingToolkit
         void Repaint();
         void SetBackgroundColor(Color color);
         void AddDrawingObject(DrawingObject drawingObject);
+        void AddDrawingObjectInZeroIndex(DrawingObject drawingObject);
         void CheckSelectedObject();
         List<DrawingObject> GetListObjects();
         DrawingObject GetObjectAt(int x, int y);

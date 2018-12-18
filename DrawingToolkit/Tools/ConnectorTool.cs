@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using DrawingToolkit.Shapes;
 using System.Windows.Forms;
 using System.Diagnostics;
+using DrawingToolkit.Command;
+using DrawingToolkit.Layer;
 
 namespace DrawingToolkit.Tools
 {
-    public class ConnectorTool : CreateTool
+    public class ConnectorTool : ConnectTool
     {
         private Connector connector;
 
@@ -38,7 +40,7 @@ namespace DrawingToolkit.Tools
         {
             connector = new Connector(new System.Drawing.Point(e.X, e.Y));
             connector.finishPoint = new System.Drawing.Point(e.X, e.Y);
-            Create(this.connector);
+            canvas.AddDrawingObjectInZeroIndex(this.connector);
         }
 
         public override void ToolMouseMove(object sender, MouseEventArgs e)
@@ -58,11 +60,13 @@ namespace DrawingToolkit.Tools
             {
                 if (e.Button == MouseButtons.Left)
                 {
+                    canvas.RemoveDrawingObject(this.connector);
                     connector.finishPoint = new System.Drawing.Point(e.X, e.Y);
                     DrawingObject startObject = canvas.GetObjectAt(connector.startPoint.X, connector.startPoint.Y);
                     DrawingObject endObject = canvas.GetObjectAt(connector.finishPoint.X, connector.finishPoint.Y);
                     connector.initStartAndEndObject(startObject, endObject);
                     connector.Select();
+                    Create(this.connector);
                 }
             }
         }
