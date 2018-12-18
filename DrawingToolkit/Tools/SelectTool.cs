@@ -84,5 +84,10 @@ namespace DrawingToolkit.Tools
                 canvas.ExecuteCommand(command);
             }
         }
+
+        public void ToolMouseDoublClick(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

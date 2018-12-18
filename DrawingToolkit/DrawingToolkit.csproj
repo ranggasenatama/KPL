@@ -90,6 +90,12 @@
     <Compile Include="States\EditState.cs" />
     <Compile Include="States\PreviewState.cs" />
     <Compile Include="States\StaticState.cs" />
+    <Compile Include="TextBoxWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextBoxWindow.Designer.cs">
+      <DependentUpon>TextBoxWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\CircleTool.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -97,6 +103,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tools\ConnectorTool.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Tools\EditTextTool.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Tools\LineTool.cs">
@@ -136,6 +145,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TextBoxWindow.resx">
+      <DependentUpon>TextBoxWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
