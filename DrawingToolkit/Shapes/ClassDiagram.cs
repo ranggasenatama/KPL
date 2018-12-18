@@ -27,16 +27,14 @@ namespace DrawingToolkit.Shapes
             RectangleWithText rectangleWithText = (listDrawingObjects[0] as RectangleWithText);
             int xText = rectangleWithText.X + rectangleWithText.Width / 3;
             int yText = rectangleWithText.Y + rectangleWithText.Height / 3;
-            rectangleWithText.AddText(value, xText, yText);
+            Text text = new Text(xText, yText, value);
+            rectangleWithText.Add(text);
         }
 
         public void AddPropertyText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[1] as RectangleWithText);
-            int xText = rectangleWithText.X;
-            int yText = rectangleWithText.Y + rectangleWithText.Height;
-            rectangleWithText.AddText(value, xText, yText);
-            rectangleWithText.UpdateHeight();
+            rectangleWithText.AddText(value);
 
             int yMethod = rectangleWithText.Height + rectangleWithText.Y;
             UpdateYMethod(yMethod);
@@ -47,8 +45,7 @@ namespace DrawingToolkit.Shapes
             RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
             int xText = rectangleWithText.X;
             int yText = rectangleWithText.Y + rectangleWithText.Height;
-            rectangleWithText.AddText(value, xText, yText);
-            rectangleWithText.UpdateHeight();
+            rectangleWithText.AddText(value);
         }
 
         public void UpdateYMethod(int Y)

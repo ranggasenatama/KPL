@@ -55,9 +55,15 @@ namespace DrawingToolkit.Shapes
             }
         }
 
-        public void AddText(string value, int x, int y)
+        public void AddText(string value)
         {
-            Debug.WriteLine("add text");
+            int x = this.X;
+            int y = this.Y;
+            if (drawingObjects.Count > 0)
+            {
+                y = this.Y + this.Height;
+                UpdateHeight();
+            }
             Text text = new Text(x, y, value);
             Add(text);
         }

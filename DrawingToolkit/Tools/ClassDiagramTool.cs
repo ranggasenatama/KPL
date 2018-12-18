@@ -68,7 +68,7 @@ namespace DrawingToolkit.Tools
                     //3
                     rectangle3.Width = width;
                     rectangle3.Height = height / 2;
-                    rectangle3.Y = rectangle2.Y + rectangle1.Height;
+                    rectangle3.Y = rectangle2.Y + rectangle2.Height;
                 }
             }
         }
