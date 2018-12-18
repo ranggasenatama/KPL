@@ -14,17 +14,30 @@ namespace DrawingToolkit.Shapes
 
         public ClassDiagram(int initX, int initY) : base()
         {
-            RectangleWithText obj1 = new RectangleWithText(initX, initY, "Class");
+            RectangleWithText obj1 = new RectangleWithText(initX, initY);
             listDrawingObjects.Add(obj1);
-            RectangleWithText obj2 = new RectangleWithText(initX, initY, "Property");
+            RectangleWithText obj2 = new RectangleWithText(initX, initY);
             listDrawingObjects.Add(obj2);
-            RectangleWithText obj3 = new RectangleWithText(initX, initY, "Method");
+            RectangleWithText obj3 = new RectangleWithText(initX, initY);
             listDrawingObjects.Add(obj3);
         }
 
-        public void AddMethodText()
+        public void AddClassText(string value)
         {
-            
+            RectangleWithText rectangleWithText = (listDrawingObjects[0] as RectangleWithText);
+            rectangleWithText.AddText(value);
+        }
+
+        public void AddPropertyText(string value)
+        {
+            RectangleWithText rectangleWithText = (listDrawingObjects[1] as RectangleWithText);
+            rectangleWithText.AddText(value);
+        }
+
+        public void AddMethodText(string value)
+        {
+            RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
+            rectangleWithText.AddText(value);
         }
 
         public override void ChangeState(DrawingState drawingState)

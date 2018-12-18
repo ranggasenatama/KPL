@@ -12,19 +12,17 @@ namespace DrawingToolkit
 {
     public partial class TextBoxWindow : Form
     {
-        private DrawingObject obj;
-        private ICanvas canvas;
-        public TextBoxWindow(string text, DrawingObject obj, ICanvas canvas)
+        public string value { get; set; }
+        public TextBoxWindow(string text)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             this.textBox1.Text = text;
-            this.obj = obj;
-            this.canvas = canvas;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            this.value = textBox1.Text;
             this.Close();
         }
 

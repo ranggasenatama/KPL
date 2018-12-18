@@ -24,12 +24,10 @@ namespace DrawingToolkit.Shapes
             this.pen = new Pen(Color.Black);
         }
 
-        public RectangleWithText(int initX, int initY, String value) : this()
+        public RectangleWithText(int initX, int initY) : this()
         {
             this.X = initX;
             this.Y = initY;
-            Text text = new Text(initX, initY, value);
-            Add(text);
         }
 
         public override bool isSelected(Point mouse)
@@ -54,6 +52,12 @@ namespace DrawingToolkit.Shapes
             {
                 obj.ChangeState(drawingState);
             }
+        }
+
+        public void AddText(string value)
+        {
+            Text text = new Text(this.X, this.Y, value);
+            Add(text);
         }
 
         public void Add(DrawingObject obj)
