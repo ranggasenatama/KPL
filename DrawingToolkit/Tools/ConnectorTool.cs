@@ -39,7 +39,6 @@ namespace DrawingToolkit.Tools
         {
             connector = new Connector(new System.Drawing.Point(e.X, e.Y));
             connector.finishPoint = new System.Drawing.Point(e.X, e.Y);
-            canvas.AddDrawingObjectInZeroIndex(this.connector);
         }
 
         public override void ToolMouseMove(object sender, MouseEventArgs e)
@@ -59,7 +58,6 @@ namespace DrawingToolkit.Tools
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    canvas.RemoveDrawingObject(this.connector);
                     connector.finishPoint = new System.Drawing.Point(e.X, e.Y);
                     DrawingObject startObject = canvas.GetObjectAt(connector.startPoint.X, connector.startPoint.Y);
                     DrawingObject endObject = canvas.GetObjectAt(connector.finishPoint.X, connector.finishPoint.Y);
