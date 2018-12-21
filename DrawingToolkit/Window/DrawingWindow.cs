@@ -57,5 +57,10 @@ namespace DrawingToolkit
         {
 
         }
+
+        private void DrawingWindow_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

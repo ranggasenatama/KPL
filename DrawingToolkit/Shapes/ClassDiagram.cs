@@ -107,9 +107,16 @@ namespace DrawingToolkit.Shapes
         public void AddClassText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[0] as RectangleWithText);
-            int xText = rectangleWithText.X + rectangleWithText.Width / 3;
-            int yText = rectangleWithText.Y + rectangleWithText.Height / 3;
-            Text text = new Text(xText, yText, value);
+            FontFamily fontFamily = new FontFamily("Arial");
+            Font font = new Font(fontFamily, 16, FontStyle.Regular, GraphicsUnit.Pixel);
+
+            Graphics grfx = Graphics.FromImage(new Bitmap(1, 1));
+
+            SizeF size = grfx.MeasureString(value, font, new PointF(0, 0), new StringFormat(StringFormatFlags.MeasureTrailingSpaces));
+
+            float xText = (rectangleWithText.Width / 2) - (size.Width / 2) + rectangleWithText.X;
+            float yText = (rectangleWithText.Height / 2) - (size.Height / 2) + rectangleWithText.Y;
+            Text text = new Text((int)xText, (int)yText, value);
             rectangleWithText.Add(text);
         }
 

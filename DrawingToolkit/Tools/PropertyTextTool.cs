@@ -30,7 +30,7 @@ namespace DrawingToolkit.Tools
         {
             this.Name = "Add Property Text Tool";
             this.ToolTipText = "Add Property Text Tool";
-            this.Image = IconSet.cursor;
+            this.Image = IconSet.property;
             this.CheckOnClick = true;
         }
 

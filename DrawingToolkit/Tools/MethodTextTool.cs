@@ -31,7 +31,7 @@ namespace DrawingToolkit.Tools
         {
             this.Name = "Add Method Text Tool";
             this.ToolTipText = "Add Method Text Tool";
-            this.Image = IconSet.cursor;
+            this.Image = IconSet.method;
             this.CheckOnClick = true;
         }
 

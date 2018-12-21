@@ -29,7 +29,7 @@ namespace DrawingToolkit.Tools
         {
             this.Name = "Class Diagram Tool";
             this.ToolTipText = "Class Diagram Tool";
-            this.Image = IconSet.rectangle;
+            this.Image = IconSet.classdiagram;
             this.CheckOnClick = true;
         }
 
@@ -88,6 +88,7 @@ namespace DrawingToolkit.Tools
                             textBoxWindow.ShowDialog();
                         }
                         string formValue = textBoxWindow.value;
+                        //this.classDiagram.Graphics = e.G
                         this.classDiagram.AddClassText(formValue);
                     }
                     this.classDiagram.Select();
