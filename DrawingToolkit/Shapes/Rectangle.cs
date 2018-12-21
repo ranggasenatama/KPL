@@ -19,6 +19,7 @@ namespace DrawingToolkit.Shapes
 
         public Rectangle() : base()
         {
+            
             this.pen = new Pen(Color.Black);
         }
 
@@ -62,19 +63,22 @@ namespace DrawingToolkit.Shapes
         {
             this.pen.Color = Color.Black;
             this.pen.DashStyle = DashStyle.Solid;
-            Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            //Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            Graphics.FillRectangle(Brushes.Red, X, Y, Width, Height);
         }
         public override void RenderOnEditingView()
         {
             this.pen.Color = Color.Blue;
             this.pen.DashStyle = DashStyle.Solid;
-            Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            //Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            Graphics.FillRectangle(Brushes.Red, X, Y, Width, Height);
         }
         public override void RenderOnPreview()
         {
             this.pen.Color = Color.Red;
             this.pen.DashStyle = DashStyle.DashDot;
-            Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            //Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
+            Graphics.FillRectangle(Brushes.White, X, Y, Width, Height);
         }
 
         public override void Translate(int xAmount, int yAmount)

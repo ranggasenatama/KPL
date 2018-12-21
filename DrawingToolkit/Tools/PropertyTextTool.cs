@@ -6,42 +6,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DrawingToolkit.Shapes;
+using DrawingToolkit.Layer;
 
 namespace DrawingToolkit.Tools
 {
-    public class PropertyTextTool : ToolStripButton, ITool
+    public class PropertyTextTool : AddTextTool
     {
-        private ICanvas canvas;
         private DrawingObject selectedObject;
 
-        public Cursor Cursor
+        public override String Name
         {
             get
             {
-                return Cursors.Arrow;
-            }
-        }
-
-        public ICanvas TargetCanvas
-        {
-            get
-            {
-                return this.canvas;
+                return name;
             }
             set
             {
-                this.canvas = value;
+                this.name = value;
             }
         }
 
         public PropertyTextTool()
         {
-            this.Name = "Property Text Tool";
-            this.ToolTipText = "Property Text Tool";
-            this.Image = IconSet.cursor;
+            this.Name = "Add Property Text Tool";
+            this.ToolTipText = "Add Property Text Tool";
+            this.Image = IconSet.property;
             this.CheckOnClick = true;
         }
-        public void ToolMouseDown(object sender, MouseEventArgs e)
+
+        public override void ToolMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left && canvas != null)
             {
@@ -50,17 +43,18 @@ namespace DrawingToolkit.Tools
                 if (selectedObject is ClassDiagram)
                 {
                     ClassDiagram classDiagram = (selectedObject as ClassDiagram);
-                    classDiagram.AddPropertyText();
+                    string value = PopUpForm("Property Name");
+                    classDiagram.AddPropertyText(value);
                 }
             }
         }
 
-        public void ToolMouseMove(object sender, MouseEventArgs e)
+        public override void ToolMouseMove(object sender, MouseEventArgs e)
         {
             
         }
 
-        public void ToolMouseUp(object sender, MouseEventArgs e)
+        public override void ToolMouseUp(object sender, MouseEventArgs e)
         {
             
         }

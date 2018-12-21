@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
@@ -15,6 +16,8 @@ namespace DrawingToolkit.Shapes
         public int Width { get; set; }
         public int Height { get; set; }
 
+        private int TEXT_SIZE = 16;
+
         private Pen pen;
 
         public List<DrawingObject> drawingObjects { get; private set; } = new List<DrawingObject>();
@@ -24,12 +27,10 @@ namespace DrawingToolkit.Shapes
             this.pen = new Pen(Color.Black);
         }
 
-        public RectangleWithText(int initX, int initY, String value) : this()
+        public RectangleWithText(int initX, int initY) : this()
         {
             this.X = initX;
             this.Y = initY;
-            Text text = new Text(initX, initY, value);
-            Add(text);
         }
 
         public override bool isSelected(Point mouse)
@@ -56,17 +57,42 @@ namespace DrawingToolkit.Shapes
             }
         }
 
+        public void AddText(string value)
+        {
+            int x = this.X;
+            int y = this.Y;
+            if (isNotNullMembers())
+            {
+                y = this.Y + this.Height;
+                UpdateHeight();
+            }
+            else
+            {
+                if(this.Height < TEXT_SIZE)
+                {
+                    this.Height = TEXT_SIZE;
+                }
+            }
+            Text text = new Text(x, y, value);
+            Add(text);
+        }
+
         public void Add(DrawingObject obj)
         {
             drawingObjects.Add(obj);
         }
 
-        public void AddHeight()
+        public void UpdateHeight()
         {
-            this.Height += this.Height / drawingObjects.Count;
+            this.Height += TEXT_SIZE;
         }
 
-        public void UpdateY(int Y)
+        public bool isNotNullMembers()
+        {
+            return drawingObjects.Count > 0;
+        }
+
+        public void UpdateYMembers(int Y)
         {
             int prevYText = Y - this.Y;
             this.Y = Y;
@@ -95,6 +121,7 @@ namespace DrawingToolkit.Shapes
         {
             this.pen.Color = Color.Black;
             this.pen.DashStyle = DashStyle.Solid;
+            Graphics.FillRectangle(Brushes.White, X, Y, Width, Height);
             Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
             foreach (DrawingObject obj in this.drawingObjects)
             {
@@ -106,6 +133,7 @@ namespace DrawingToolkit.Shapes
         {
             this.pen.Color = Color.Blue;
             this.pen.DashStyle = DashStyle.Solid;
+            Graphics.FillRectangle(Brushes.White, X, Y, Width, Height);
             Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
             foreach (DrawingObject obj in this.drawingObjects)
             {
@@ -117,6 +145,7 @@ namespace DrawingToolkit.Shapes
         {
             this.pen.Color = Color.Red;
             this.pen.DashStyle = DashStyle.DashDot;
+            Graphics.FillRectangle(Brushes.White, X, Y, Width, Height);
             Graphics.DrawRectangle(this.pen, X, Y, Width, Height);
             foreach (DrawingObject obj in this.drawingObjects)
             {
@@ -133,7 +162,9 @@ namespace DrawingToolkit.Shapes
             }
             this.X += xAmount;
             this.Y += yAmount;
-            this.centerPoint = drawingObjects[0].centerPoint;
+            int centerOfX = this.X + Width / 2;
+            int centerOfY = this.Y + Height / 2;
+            this.centerPoint = new Point(centerOfX, centerOfY);
             notify();
         }
     }

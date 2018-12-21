@@ -30,13 +30,13 @@ namespace DrawingToolkit
             this.toolbox.AddTool(new SelectTool());
             this.toolbox.AddTool(new LineTool());
             this.toolbox.AddTool(new CircleTool());
-            this.toolbox.AddTool(new ConnectorTool());
             this.toolbox.AddTool(new RectangleTool());
+            this.toolbox.AddTool(new ConnectorTool());
             this.toolbox.AddTool(new ClassDiagramTool());
-            this.toolbox.AddTool(new UndoTool());
-            this.toolbox.AddTool(new RedoTool());
             this.toolbox.AddTool(new PropertyTextTool());
             this.toolbox.AddTool(new MethodTextTool());
+            this.toolbox.AddTool(new UndoTool());
+            this.toolbox.AddTool(new RedoTool());
 
             //this.toolbox.AddTool(new StatefulLineTool());
             this.toolbox.ToolSelected += Toolbox_ToolSelected;
@@ -53,6 +53,11 @@ namespace DrawingToolkit
         }
 
         private void toolStripContainer1_ContentPanel_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DrawingWindow_Load(object sender, EventArgs e)
         {
 
         }
