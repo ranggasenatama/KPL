@@ -16,6 +16,8 @@ namespace DrawingToolkit.Shapes
         public int Width { get; set; }
         public int Height { get; set; }
 
+        private int TEXT_SIZE = 16;
+
         private Pen pen;
 
         public List<DrawingObject> drawingObjects { get; private set; } = new List<DrawingObject>();
@@ -59,14 +61,17 @@ namespace DrawingToolkit.Shapes
         {
             int x = this.X;
             int y = this.Y;
-            if (drawingObjects.Count > 0)
+            if (isNotNullMembers())
             {
                 y = this.Y + this.Height;
                 UpdateHeight();
             }
             else
             {
-               this.Height = 16;
+                if(this.Height < TEXT_SIZE)
+                {
+                    this.Height = TEXT_SIZE;
+                }
             }
             Text text = new Text(x, y, value);
             Add(text);
@@ -79,7 +84,12 @@ namespace DrawingToolkit.Shapes
 
         public void UpdateHeight()
         {
-            this.Height += 16;
+            this.Height += TEXT_SIZE;
+        }
+
+        public bool isNotNullMembers()
+        {
+            return drawingObjects.Count > 0;
         }
 
         public void UpdateYMembers(int Y)

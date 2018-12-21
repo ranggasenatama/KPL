@@ -107,41 +107,24 @@ namespace DrawingToolkit.Shapes
         public void AddClassText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[0] as RectangleWithText);
-            SizeF size = getSizeOfTextString(value);
-            if (rectangleWithText.Width < size.Width)
-            {
-                updateWidthMembers(size.Width);
-            }
-            float xText = (rectangleWithText.Width / 2) - (size.Width / 2) + rectangleWithText.X;
-            float yText = (rectangleWithText.Height / 2) - (size.Height / 2) + rectangleWithText.Y;
-            Text text = new Text((int)xText, (int)yText, value);
-            rectangleWithText.Add(text);
+            rectangleWithText.AddText(value);
+            syncWidthText(value, rectangleWithText);
         }
 
         public void AddPropertyText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[1] as RectangleWithText);
-            SizeF size = getSizeOfTextString(value);
-            if (rectangleWithText.Width < size.Width)
-            {
-                updateWidthMembers(size.Width);
-            }
             rectangleWithText.AddText(value);
-            int yMethod = rectangleWithText.Height + rectangleWithText.Y;
-            UpdateYMethod(yMethod);
+            syncWidthText(value, rectangleWithText);
+            
+            UpdateMethodRectangle(rectangleWithText);
         }
 
         public void AddMethodText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
-            SizeF size = getSizeOfTextString(value);
-            if (rectangleWithText.Width < size.Width)
-            {
-                updateWidthMembers(size.Width);
-            }
-            int xText = rectangleWithText.X;
-            int yText = rectangleWithText.Y + rectangleWithText.Height;
             rectangleWithText.AddText(value);
+            syncWidthText(value, rectangleWithText);
         }
 
         public SizeF getSizeOfTextString(string value)
@@ -153,6 +136,16 @@ namespace DrawingToolkit.Shapes
             return size;
         }
 
+        public void syncWidthText(string value, RectangleWithText rectangleWithText)
+        {
+            SizeF size = getSizeOfTextString(value);
+            if (rectangleWithText.Width < size.Width)
+            {
+                updateWidthMembers(size.Width);
+            }
+            updateClassCenterText();
+        }
+
         public void updateWidthMembers(float width)
         {
             foreach (DrawingObject obj in this.listDrawingObjects)
@@ -161,10 +154,23 @@ namespace DrawingToolkit.Shapes
             }
         }
 
-        public void UpdateYMethod(int Y)
+        public void updateClassCenterText()
         {
+            RectangleWithText rectangleWithText = (listDrawingObjects[0] as RectangleWithText);
+            Text text = (rectangleWithText.drawingObjects[0] as Text);
+            string value = (rectangleWithText.drawingObjects[0] as Text).Value;
+            SizeF size = getSizeOfTextString(value);
+            float xText = (rectangleWithText.Width / 2) - (size.Width / 2) + rectangleWithText.X;
+            float yText = (rectangleWithText.Height / 2) - (size.Height / 2) + rectangleWithText.Y;
+            text.X = (int)xText;
+            text.Y = (int)yText;
+        }
+
+        public void UpdateMethodRectangle(RectangleWithText rectangleProperty)
+        {
+            int yMethod = rectangleProperty.Height + rectangleProperty.Y;
             RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
-            rectangleWithText.UpdateYMembers(Y);
+            rectangleWithText.UpdateYMembers(yMethod);
         }
     }
 }
