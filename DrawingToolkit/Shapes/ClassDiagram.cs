@@ -107,13 +107,11 @@ namespace DrawingToolkit.Shapes
         public void AddClassText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[0] as RectangleWithText);
-            FontFamily fontFamily = new FontFamily("Arial");
-            Font font = new Font(fontFamily, 16, FontStyle.Regular, GraphicsUnit.Pixel);
-
-            Graphics grfx = Graphics.FromImage(new Bitmap(1, 1));
-
-            SizeF size = grfx.MeasureString(value, font, new PointF(0, 0), new StringFormat(StringFormatFlags.MeasureTrailingSpaces));
-
+            SizeF size = getSizeOfTextString(value);
+            if (rectangleWithText.Width < size.Width)
+            {
+                updateWidthMembers(size.Width);
+            }
             float xText = (rectangleWithText.Width / 2) - (size.Width / 2) + rectangleWithText.X;
             float yText = (rectangleWithText.Height / 2) - (size.Height / 2) + rectangleWithText.Y;
             Text text = new Text((int)xText, (int)yText, value);
@@ -123,8 +121,12 @@ namespace DrawingToolkit.Shapes
         public void AddPropertyText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[1] as RectangleWithText);
+            SizeF size = getSizeOfTextString(value);
+            if (rectangleWithText.Width < size.Width)
+            {
+                updateWidthMembers(size.Width);
+            }
             rectangleWithText.AddText(value);
-
             int yMethod = rectangleWithText.Height + rectangleWithText.Y;
             UpdateYMethod(yMethod);
         }
@@ -132,9 +134,31 @@ namespace DrawingToolkit.Shapes
         public void AddMethodText(string value)
         {
             RectangleWithText rectangleWithText = (listDrawingObjects[2] as RectangleWithText);
+            SizeF size = getSizeOfTextString(value);
+            if (rectangleWithText.Width < size.Width)
+            {
+                updateWidthMembers(size.Width);
+            }
             int xText = rectangleWithText.X;
             int yText = rectangleWithText.Y + rectangleWithText.Height;
             rectangleWithText.AddText(value);
+        }
+
+        public SizeF getSizeOfTextString(string value)
+        {
+            FontFamily fontFamily = new FontFamily("Arial");
+            Font font = new Font(fontFamily, 16, FontStyle.Regular, GraphicsUnit.Pixel);
+            Graphics grfx = Graphics.FromImage(new Bitmap(1, 1));
+            SizeF size = grfx.MeasureString(value, font, new PointF(0, 0), new StringFormat(StringFormatFlags.MeasureTrailingSpaces));
+            return size;
+        }
+
+        public void updateWidthMembers(float width)
+        {
+            foreach (DrawingObject obj in this.listDrawingObjects)
+            {
+                (obj as RectangleWithText).Width = (int)width;
+            }
         }
 
         public void UpdateYMethod(int Y)

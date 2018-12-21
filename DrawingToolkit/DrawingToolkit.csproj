@@ -112,9 +112,6 @@
     <Compile Include="Tools\ConnectorTool.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Tools\EditTextTool.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Tools\LineTool.cs">
       <SubType>Component</SubType>
     </Compile>

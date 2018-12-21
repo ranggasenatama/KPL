@@ -88,7 +88,6 @@ namespace DrawingToolkit.Tools
                             textBoxWindow.ShowDialog();
                         }
                         string formValue = textBoxWindow.value;
-                        //this.classDiagram.Graphics = e.G
                         this.classDiagram.AddClassText(formValue);
                     }
                     this.classDiagram.Select();
